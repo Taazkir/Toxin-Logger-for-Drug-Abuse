@@ -5,4 +5,5 @@
 {% block content %}
 <h1>Welcome, {{ user.name }}!</h1>
 <p>This is your dashboard. You can view and manage your profile here.</p>
+<p><a href="{% url 'intake' %}">Add Drug Intake</a></p>
 {% endblock %}

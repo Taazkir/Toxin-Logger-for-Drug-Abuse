@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-
+from .forms import AlcoholForm, CigaretteForm
 from .forms import CustomUserCreationForm
 from .serializers import UserSerializer
 
@@ -47,6 +47,7 @@ def signup(request):
         form = CustomUserCreationForm()
     return render(request, 'signup.html', {'form': form})
 
+
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -65,3 +66,39 @@ def user_login(request):
 @login_required
 def dashboard(request):
     return render(request, 'dashboard.html', {'user': request.user})
+
+
+def calculate_bac(alcohol_grams, weight_kg, gender):
+    # Convert weight to grams
+    weight_grams = weight_kg * 1000
+
+    # Define distribution ratios
+    distribution_ratio = 0.68 if gender == 'M' else 0.55
+
+    # Calculate BAC
+    bac = (alcohol_grams / weight_grams) * 100 * distribution_ratio
+
+    return bac
+
+
+@login_required
+def add_drug_intake(request):
+    alcohol_form = AlcoholForm()
+    cigarette_form = CigaretteForm()
+    if request.method == 'POST':
+        if 'alcohol_submit' in request.POST:
+            alcohol_form = AlcoholForm(request.POST)
+            if alcohol_form.is_valid():
+                alcohol_intake = alcohol_form.save(commit=False)
+                alcohol_intake.user = request.user
+                alcohol_intake.save()
+                return redirect('dashboard')
+        elif 'cigarette_submit' in request.POST:
+            cigarette_form = CigaretteForm(request.POST)
+            if cigarette_form.is_valid():
+                cigarette_intake = cigarette_form.save(commit=False)
+                cigarette_intake.user = request.user
+                cigarette_intake.save()
+                return redirect('dashboard')
+    return render(request, 'intake.html',
+                  {'alcohol_form': alcohol_form, 'cigarette_form': cigarette_form})

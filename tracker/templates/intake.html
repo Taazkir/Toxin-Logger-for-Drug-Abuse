@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Drug Intake - Drug Abuse Tracker{% endblock %}
+
+{% block content %}
+<h1>Add Drug Intake</h1>
+
+<!-- Alcohol intake form -->
+<form method="post">
+    {% csrf_token %}
+    {{ alcohol_form.as_p }}
+    <button type="submit" name="alcohol_submit">Add Alcohol Intake</button>
+</form>
+
+<!-- Cigarette intake form -->
+<form method="post">
+    {% csrf_token %}
+    {{ cigarette_form.as_p }}
+    <button type="submit" name="cigarette_submit">Add Cigarette Intake</button>
+</form>
+
+{% endblock %}

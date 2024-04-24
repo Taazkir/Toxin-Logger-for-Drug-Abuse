@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
+from .models import AlcoholIntake, CigaretteIntake
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -24,3 +25,14 @@ class CustomUserCreationForm(UserCreationForm):
         total_inches = feet * 12 + inches
         cleaned_data["height"] = total_inches
         return cleaned_data
+
+
+class AlcoholForm(forms.ModelForm):
+    class Meta:
+        model = AlcoholIntake
+        fields = ['alcohol_type', 'amount']
+
+class CigaretteForm(forms.ModelForm):
+    class Meta:
+        model = CigaretteIntake
+        fields = ['units']
