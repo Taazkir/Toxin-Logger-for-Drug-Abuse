@@ -54,11 +54,11 @@
         <p>No cigarette toxins data available.</p>
     {% endif %}
 
-{#    {% if alcohol_toxins %}#}
-{#        <p>Alcohol  Toxins: {{ alcohol_toxins|floatformat:2 }} mg</p>#}
-{#    {% else %}#}
-{#        <p>No alcohol toxins data available.</p>#}
-{#    {% endif %}#}
+    {% if alcohol_toxins %}
+        <p>Alcohol  Toxins: {{ alcohol_toxins|floatformat:2 }} mg</p>
+    {% else %}
+        <p>No alcohol toxins data available.</p>
+    {% endif %}
 <p><a href="{% url 'intake' %}">Add Drug Intake</a></p>
 {% endblock %}
 

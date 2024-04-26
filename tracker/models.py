@@ -15,6 +15,12 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.username
 
+    def total_alcohol(self):
+        return self.alcoholintake_set.aggregate(total_amount=models.Sum('amount'))['total_amount'] or 0
+
+    def total_cigarettes(self):
+        return self.cigaretteintake_set.aggregate(total_units=models.Sum('units'))['total_units'] or 0
+
 
 class AlcoholIntake(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
