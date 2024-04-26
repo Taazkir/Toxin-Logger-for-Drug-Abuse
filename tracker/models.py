@@ -8,42 +8,12 @@ class CustomUser(AbstractUser):
     height = models.IntegerField(null=True, blank=True)
     weight = models.FloatField(null=True, blank=True)
     phone_number = models.CharField(max_length=15, null=True, blank=True)
-
-    def calculate_alcohol_toxins(self):
-        # cigarettes = DrugIntake.objects.filter(user=self, drug_type='cigarette').count()
-
-        alcohol_toxins = {
-            'beer': 0.05,
-            'wine': 0.12,
-            'liquor': 0.4,
-            'mixed_drink': 0.2,
-        }
-
-        total_alcohol_toxins = sum(
-            [alcohol_toxins[alcohol.alcohol_type.lower()] * alcohol.amount for alcohol in self.alcoholintake_set.all()])
+    bac = models.FloatField(null=True, blank=True)
+    cigarette_toxins = models.FloatField(null=True, blank=True)
+    alcohol_toxins = models.FloatField(null=True, blank=True)
 
     def __str__(self):
         return self.username
-
-
-# class DrugIntake(models.Model):
-#     DRUG_CHOICES = (
-#         ('cigarette', 'Cigarette'),
-#         ('alcohol', 'Alcohol'),
-#     )
-#
-#     ALCOHOL_TYPE_CHOICES = (
-#         ('beer', 'Beer'),
-#         ('wine', 'Wine'),
-#         ('liquor', 'Liquor'),
-#         ('mixed_drink', 'Mixed Drink'),
-#     )
-#
-#     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-#     drug_type = models.CharField(max_length=50, choices=DRUG_CHOICES)
-#     alcohol_type = models.CharField(max_length=50, choices=ALCOHOL_TYPE_CHOICES, null=True, blank=True)
-#     amount = models.IntegerField()
-#     timestamp = models.DateTimeField(auto_now_add=True)
 
 
 class AlcoholIntake(models.Model):

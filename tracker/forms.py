@@ -26,13 +26,32 @@ class CustomUserCreationForm(UserCreationForm):
         cleaned_data["height"] = total_inches
         return cleaned_data
 
+    def save(self, commit=True):
+        user = super(CustomUserCreationForm, self).save(commit=False)
+
+        # Calculate height in inches
+        total_inches = self.cleaned_data['feet'] * 12 + self.cleaned_data['inches']
+
+        user.height = total_inches
+
+        if commit:
+            user.save()
+
+        return user
+
+
+
 
 class AlcoholForm(forms.ModelForm):
+    amount = forms.IntegerField(min_value=0)
+    alcohol_type = forms.ChoiceField(choices=AlcoholIntake.ALCOHOL_TYPES)
     class Meta:
         model = AlcoholIntake
         fields = ['alcohol_type', 'amount']
 
+
 class CigaretteForm(forms.ModelForm):
+    units = forms.IntegerField(min_value=0)
     class Meta:
         model = CigaretteIntake
         fields = ['units']

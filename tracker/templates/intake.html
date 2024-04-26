@@ -12,6 +12,13 @@
     <button type="submit" name="alcohol_submit">Add Alcohol Intake</button>
 </form>
 
+{% if messages %}
+<div>
+
+    <p>{{ message }}</p>
+
+</div>
+{% endif %}
 <!-- Cigarette intake form -->
 <form method="post">
     {% csrf_token %}
