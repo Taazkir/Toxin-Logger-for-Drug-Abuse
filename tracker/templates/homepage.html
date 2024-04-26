@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Homepage</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Homepage - Drug Abuse Tracker{% endblock %}
+
+{% block content %}
     <h1>Welcome to Drug Abuse Tracker</h1>
+    <p>This platform aims to help individuals struggling with substance abuse by providing tools to track their drug intake and manage their addiction.</p>
+    <p>Sign up or log in to get started.</p>
     <a href="{% url 'signup' %}">Register</a> |
     <a href="{% url 'login' %}">Login</a>
-</body>
-</html>
+{% endblock %}

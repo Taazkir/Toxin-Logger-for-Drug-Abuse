@@ -122,7 +122,7 @@ def calculate_bac(alcohol_type, alcohol_intake, weight_kg, gender, last_intake_t
     # Reduce BAC based on time elapsed since last intake
     if last_intake_time:
         current_time = timezone.now()
-        time_elapsed = (current_time - last_intake_time).total_seconds() / 3600  # Convert to hours
+        time_elapsed = (current_time - last_intake_time).total_seconds() / 3600
         bac -= time_elapsed * 0.015  # Assume BAC decreases by 0.015 per hour
 
     return max(bac, 0)
@@ -143,8 +143,8 @@ def update_bac_thread():
             print(updated_bac)
             user.save()
 
-        # Sleep for some time before updating again (e.g., every hour)
-        time.sleep(3)  # Sleep for 1 hour
+        # Sleep for some time before updating again
+        time.sleep(3600)  # Sleep for 1 hour
 
 
 def start_bac_update_thread():

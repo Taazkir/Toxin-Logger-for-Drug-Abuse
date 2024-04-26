@@ -13,12 +13,13 @@
 <p>This is your dashboard. You can view and manage your profile here.</p>
 
     <h2>Your Details:</h2>
-    <p>Height: {{ height }} cm</p>
+
     <p>Weight: {{ weight }} kg</p>
+
 
     <h2>Your Health Stats:</h2>
        <h4>Your Total Drug Consumption:</h4>
-    <p>Total Alcohol Consumed: {{ total_alcohol }} ml</p>
+    <p>Total Alcohol Consumed: {{ total_alcohol }} drink(s)</p>
     <p>Total Cigarettes Smoked: {{ total_cigarettes }}</p>
 
 {#    {% if bac %}#}
@@ -53,11 +54,11 @@
         <p>No cigarette toxins data available.</p>
     {% endif %}
 
-    {% if alcohol_toxins %}
-        <p>Alcohol  Toxins: {{ alcohol_toxins|floatformat:2 }} mg</p>
-    {% else %}
-        <p>No alcohol toxins data available.</p>
-    {% endif %}
+{#    {% if alcohol_toxins %}#}
+{#        <p>Alcohol  Toxins: {{ alcohol_toxins|floatformat:2 }} mg</p>#}
+{#    {% else %}#}
+{#        <p>No alcohol toxins data available.</p>#}
+{#    {% endif %}#}
 <p><a href="{% url 'intake' %}">Add Drug Intake</a></p>
 {% endblock %}
 
