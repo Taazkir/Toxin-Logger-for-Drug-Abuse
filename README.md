@@ -35,6 +35,16 @@ To install and use the software, follow these steps:
 
 ### Code structure: 
 The code follows a modular structure, with separate files for models, views, forms, and templates. 
+The model.py file contains the database schemas for the User, Alcohol Intake, and Cigarette Intake. The two intake models are associated with a user, hence they use the user as a foreign key in their tables. 
+
+The urls.py file contains the URL routing for when a user makes an HTTP request to a specific URL and maps the URL to a particular function in views.py
+
+The views.py file contains the business logic of the program. Based on the endpoint from which it receives the HTTP request, the corresponding function to handle that request is called. Here, views.py contains the logic to sign up a user and send their data to the User model to be stored. For login, it retrieves data from the user model to verify the credentials. For the dashboard, views display the data from the user model and the two intake models. This is also where the logic to calculate the toxins is and where the thread to calculate the BAC is created and started and the database is updated with the updated BAC value. Views also render the HTML templates.
+
+The forms.py file holds the different forms used in the program such as signup, login, and alcohol and cigarette intake forms. They are passed on to the HTML files through the views.py file.  
+
+![Untitled Diagram drawio](https://github.com/Taazkir/Toxin-Logger-for-Drug-Abuse/assets/107087417/c11ce19e-1c4b-4e83-9b2f-6f2e7a08e6fe)
+
 
 ### List of functionalities:
 The application allows users to:
