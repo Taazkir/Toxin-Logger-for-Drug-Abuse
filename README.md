@@ -59,6 +59,27 @@ The application allows users to:
 
 ### Test Results: 
 
+<img width="997" alt="Screenshot 2024-04-26 at 2 00 36 PM" src="https://github.com/Taazkir/Toxin-Logger-for-Drug-Abuse/assets/107087417/47068b7f-88bb-43d6-aff5-0459b5b1bef1">
+
+Signup-Login and saving to database
+
+<img width="1130" alt="Screenshot 2024-04-26 at 2 03 29 PM" src="https://github.com/Taazkir/Toxin-Logger-for-Drug-Abuse/assets/107087417/30855343-4c08-4320-be25-6d9e0093aebc">
+
+<img width="1204" alt="Screenshot 2024-04-26 at 2 05 56 PM" src="https://github.com/Taazkir/Toxin-Logger-for-Drug-Abuse/assets/107087417/5de5c0cb-b2f0-4fa6-aaa4-c78417beed6b">
+
+Retrieve user info from database and display to dashboard
+
+<img width="1204" alt="Screenshot 2024-04-26 at 2 06 15 PM" src="https://github.com/Taazkir/Toxin-Logger-for-Drug-Abuse/assets/107087417/6fef0720-6fa4-4103-865c-1a17444eebd4">
+
+Adding intake data and updating database and dashboard
+
+<img width="1204" alt="Screenshot 2024-04-26 at 2 06 49 PM" src="https://github.com/Taazkir/Toxin-Logger-for-Drug-Abuse/assets/107087417/80b28387-b474-4a40-8f9f-a6f8990624c8">
+
+<img width="1204" alt="Screenshot 2024-04-26 at 2 07 05 PM" src="https://github.com/Taazkir/Toxin-Logger-for-Drug-Abuse/assets/107087417/cb39f79b-8231-4de1-882a-c7e0e5cd507e">
+
+<img width="2029" alt="Screenshot 2024-04-26 at 2 08 15 PM" src="https://github.com/Taazkir/Toxin-Logger-for-Drug-Abuse/assets/107087417/92291b6d-9fc8-41cb-9862-f8d4ec633378">
+
+
 ### Discussion and Conclusion:
 In developing this project, we applied key learnings in the areas of concurrency, security, and system design. The utilization of threads played a crucial role in the implementation of real-time updates for Blood Alcohol Concentration (BAC) levels, demonstrating our understanding of concurrent programming concepts.
 
